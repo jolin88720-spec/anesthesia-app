@@ -22,9 +22,21 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden bg-[#07070F]">
+      {/* Background Image with Black & White Filter */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: "url('/images/cover-bg.jpg')", 
+          filter: 'grayscale(100%) contrast(1.1) brightness(0.7)',
+          opacity: 0.6
+        }}
+      />
+      {/* Dark Overlay for Readability */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#07070F]/80 via-[#07070F]/50 to-[#07070F] pointer-events-none" />
+
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(0,212,255,0.08) 0%, transparent 60%)', filter: 'blur(50px)' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full pointer-events-none z-0"
+        style={{ background: 'radial-gradient(ellipse, rgba(0,212,255,0.15) 0%, transparent 60%)', filter: 'blur(50px)' }} />
 
       <main className="flex-1 flex flex-col items-center justify-center max-w-lg w-full z-10 animate-slide-in-up">
         
