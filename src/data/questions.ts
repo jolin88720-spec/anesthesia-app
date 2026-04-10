@@ -21,7 +21,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
     explanation: 'Propofol注射疼痛是臨床常見問題，主因其溶於大豆油乳劑中，刺激靜脈壁。可先給予Lidocaine 0.5mg/kg預防。Propofol本身無鎮痛效果；給藥後因血管擴張導致心輸出量降低；主要在肝臟代謝，腸外代謝也有貢獻。',
     keyPoint: 'Propofol注射疼痛機轉與預防方法',
     commonTrap: '容易誤以為有鎮痛效果，或認為代謝在腎臟',
-    tags: ['propofol', '靜脈麻醉', '注射疼痛'], source: '113年進階試題', isActive: true
+    tags: ['propofol', '靜脈麻醉', '注射疼痛'], source: '113年進階第15題', isActive: true
   },
   {
     id: 'q002', category: '麻醉藥理學', subcategory: '吸入麻醉藥',
@@ -37,7 +37,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
     explanation: 'Dantrolene是惡性高熱唯一有效的治療藥物，機轉為阻斷肌漿網狀內皮系統的鈣離子釋放，劑量為2.5mg/kg IV快速給予，可重複至10mg/kg。Succinylcholine反而是誘發惡性高熱的觸發藥物之一。',
     keyPoint: '惡性高熱診斷三要素（體溫升高、肌肉僵硬、高碳酸血症）與Dantrolene治療',
     commonTrap: '惡性高熱與Succinylcholine的關係——Succinylcholine是誘因不是治療',
-    tags: ['惡性高熱', 'dantrolene', '急救'], source: '113年進階試題', isActive: true
+    tags: ['惡性高熱', 'dantrolene', '急救'], source: '113年進階第22題', isActive: true
   },
   {
     id: 'q003', category: '氣道管理', subcategory: '插管技術',
@@ -52,7 +52,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
     correctAnswer: 'C',
     explanation: 'Cormack-Lehane分級：Grade I=聲門全可見；Grade II=僅见聲門後半部或杓狀軟骨；Grade III=僅見會厭（epiglottis only）；Grade IV=連會厭都看不到。Grade III-IV屬困難插管，需備用計畫（video laryngoscope、LMA等）。',
     keyPoint: 'CL分級系統各級特徵，Grade III是考試常考點',
-    tags: ['困難插管', '喉鏡', 'Cormack-Lehane'], source: '112年進階試題', isActive: true
+    tags: ['困難插管', '喉鏡', 'Cormack-Lehane'], source: '112年進階第8題', isActive: true
   },
   {
     id: 'q004', category: '術中照護', subcategory: '低血壓處理',
@@ -67,7 +67,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
     correctAnswer: 'B',
     explanation: '術中低血壓處理原則：先找原因再治療。原因包括：(1)麻醉過深→降低麻醉藥；(2)出血/低血容→輸液/輸血；(3)過敏反應→Epinephrine；(4)心臟問題→對症。盲目給升壓藥或增加麻醉深度都不是正確首要步驟。',
     keyPoint: '術中低血壓的鑑別診斷與分步處理原則（ABCDE評估）',
-    tags: ['低血壓', '術中照護', '血壓管理'], source: '113年通論試題', isActive: true
+    tags: ['低血壓', '術中照護', '血壓管理'], source: '113年通論第34題', isActive: true
   },
   {
     id: 'q005', category: '麻醉設備與監測', subcategory: '監測儀器',
@@ -82,7 +82,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
     correctAnswer: 'B',
     explanation: 'Pulse Oximeter測量的是SpO₂（peripheral oxygen saturation），利用不同波長光線（660nm紅光、940nm紅外光）計算氧合血紅素比例。注意：SpO₂正常不等於PaO₂正常——在氧解離曲線平台期，PaO₂可能已下降但SpO₂仍維持正常範圍。',
     keyPoint: 'SpO₂ vs PaO₂的差異，氧解離曲線臨床意義',
-    tags: ['SpO₂', '監測', '血氧'], source: '112年通論試題', isActive: true
+    tags: ['SpO₂', '監測', '血氧'], source: '112年通論第12題', isActive: true
   },
   {
     id: 'q006', category: '術前評估', subcategory: 'ASA分級',
@@ -97,7 +97,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
     correctAnswer: 'B',
     explanation: 'ASA分級：I=正常健康；II=有輕度全身性疾病（控制良好的高血壓、糖尿病、BMI<40、輕度肺病）；III=嚴重全身性疾病（未控制DM、有症狀COPD、病態性肥胖）；IV=危及生命的嚴重疾病；V=瀕死病人。控制良好的高血壓屬ASA II。',
     keyPoint: 'ASA分級各級標準與常見例子',
-    tags: ['ASA分級', '術前評估'], source: '111年通論試題', isActive: true
+    tags: ['ASA分級', '術前評估'], source: '111年通論第5題', isActive: true
   },
   {
     id: 'q007', category: '急救與危急狀況處理', subcategory: '過敏反應',
@@ -112,7 +112,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
     correctAnswer: 'C',
     explanation: 'Anaphylaxis第一線治療：Epinephrine是唯一可以同時對抗過敏反應多重病理機轉的藥物（支氣管擴張、升壓、減少組織胺釋放）。術中靜脈給予1:10000濃度（0.1mg=1ml），可每5-10分鐘重複。抗組織胺和類固醇是第二線輔助治療，不能取代Epinephrine。',
     keyPoint: 'Anaphylaxis：Epinephrine優先，三角治療記憶法（E-A-S：Epi、抗組織胺、Steroid）',
-    tags: ['過敏反應', 'Epinephrine', '急救'], source: '112年進階試題', isActive: true
+    tags: ['過敏反應', 'Epinephrine', '急救'], source: '112年進階第41題', isActive: true
   },
   {
     id: 'q008', category: '麻醉生理學', subcategory: '呼吸生理',
@@ -127,7 +127,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
     correctAnswer: 'B',
     explanation: '正常成人呼吸參數：潮氣量（TV）= 500-600 mL（約7-8 mL/kg）；呼吸次數=12-16次/分；分鐘通氣量=TV×RR≈6-8 L/min；死腔（Dead space）≈150 mL（約解剖死腔）。機械通氣時建議TV=6-8 mL/kg理想體重（肺保護策略）。',
     keyPoint: '正常呼吸參數記憶：TV 500mL、RR 12-16、MV 6-8L/min',
-    tags: ['潮氣量', '呼吸生理', '機械通氣'], source: '110年通論試題', isActive: true
+    tags: ['潮氣量', '呼吸生理', '機械通氣'], source: '110年通論第18題', isActive: true
   },
   {
     id: 'q009', category: '術後恢復照護', subcategory: 'PACU監測',
@@ -142,7 +142,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
     correctAnswer: 'B',
     explanation: '術後寒顫（Post-anesthetic shivering）常見原因：低體溫、揮發性麻醉藥殘留、阿片類藥物戒斷。初步處置：(1)加蓋保暖毯或強制熱風毯；(2)測量體溫；(3)評估是否有其他原因。若保暖無效，Meperidine 12.5-25mg IV是有效的藥物選擇，但應先嘗試非藥物方法。',
     keyPoint: '術後寒顫：先保暖非藥物處置，無效再用Meperidine',
-    tags: ['寒顫', 'PACU', '術後照護'], source: '113年通論試題', isActive: true
+    tags: ['寒顫', 'PACU', '術後照護'], source: '113年通論第67題', isActive: true
   },
   {
     id: 'q010', category: '麻醉藥理學', subcategory: '肌肉鬆弛劑',
@@ -157,7 +157,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
     correctAnswer: 'C',
     explanation: 'Succinylcholine最大優點是起效快（30-60秒，適合RSI快速插管）且持續時間短（10-15分鐘）。缺點包括：(1)高血鉀風險（燒傷、截癱、長期臥床者禁用）；(2)可能誘發惡性高熱；(3)心律不整；(4)不能被Neostigmine拮抗。非去極化型才能用Neostigmine/Sugammadex拮抗。',
     keyPoint: 'Succinylcholine：RSI首選但禁忌症多；Rocuronium+Sugammadex可替代',
-    tags: ['Succinylcholine', '肌肉鬆弛劑', 'RSI', '快速插管'], source: '111年進階試題', isActive: true
+    tags: ['Succinylcholine', '肌肉鬆弛劑', 'RSI', '快速插管'], source: '111年進階第29題', isActive: true
   },
   {
     id: 'q011', category: '麻醉設備與監測', subcategory: 'BIS監測',
@@ -172,7 +172,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
     correctAnswer: 'B',
     explanation: 'BIS Monitor監測大腦電氣活動（EEG衍生），反映意識/麻醉深度：100=完全清醒；80-100=輕度鎮靜；60-80=淺麻醉（可能有術中知曉）；40-60=適當全麻深度；<40=過深麻醉；0=等電位（腦死）。BIS 40-60是全麻手術目標範圍。',
     keyPoint: 'BIS 40-60為全麻目標，<60減少術中知曉風險',
-    tags: ['BIS', '麻醉深度', '術中知曉'], source: '110年進階試題', isActive: true
+    tags: ['BIS', '麻醉深度', '術中知曉'], source: '110年進階第53題', isActive: true
   },
   {
     id: 'q012', category: '法規倫理', subcategory: '知情同意',
@@ -187,7 +187,7 @@ export const SAMPLE_QUESTIONS: Question[] = [
     correctAnswer: 'C',
     explanation: '麻醉知情同意應由麻醉科醫師在術前訪視時向病人說明，內容包括：麻醉方式、可能風險與併發症、替代方案、術後疼痛控制計畫。麻醉專科護理師可協助說明及準備文件，但法律上負責簽署說明的是麻醉科醫師。',
     keyPoint: '麻醉知情同意：由麻醉科醫師負責；護理師協助但不主責',
-    tags: ['知情同意', '法規', '麻醉倫理'], source: '109年通論試題', isActive: true
+    tags: ['知情同意', '法規', '麻醉倫理'], source: '109年通論第72題', isActive: true
   },
 ]
 
