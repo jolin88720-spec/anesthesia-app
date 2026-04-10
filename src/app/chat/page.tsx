@@ -72,95 +72,104 @@ export default function ChatPage() {
 
   return (
     <AppShell>
-      <div className="flex flex-col h-[calc(100vh-8rem)] md:h-[calc(100vh-4rem)] max-w-3xl mx-auto">
-        {/* Header */}
-        <div className="flex items-center justify-between pb-4 border-b flex-shrink-0" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#00d4ff,#6366f1)' }}>
-              🧠
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-white">AI 教學問答</p>
-              <p className="text-xs" style={{ color: 'var(--text-muted)' }}>基於麻醉知識庫的精準回答</p>
-            </div>
+      <div className="relative min-h-[500px] h-[calc(100vh-8rem)] md:h-[calc(100vh-4rem)]">
+        <div className="absolute inset-0 z-50 flex items-center justify-center p-4">
+          <div className="glass-card p-8 text-center max-w-sm w-full mx-auto flex flex-col items-center shadow-2xl" style={{ background: 'rgba(7,7,15,0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.15)' }}>
+            <div className="text-4xl mb-4">🔒</div>
+            <h2 className="text-xl font-bold text-white mb-2">付費解鎖新功能</h2>
+            <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>此功能尚未研發完成。<br/>未來將提供進階付費解鎖，敬請期待！</p>
           </div>
-          {chatHistory.length > 0 && (
-            <button onClick={clearChat} className="btn-glass text-xs py-1.5 px-3 gap-1.5">
-              <Trash2 size={12} /> 清除對話
-            </button>
-          )}
         </div>
-
-        {/* Messages */}
-        <div className="flex-1 overflow-y-auto py-4 space-y-4">
-          {chatHistory.length === 0 && (
-            <div className="space-y-4">
-              <div className="chat-bubble-ai max-w-lg">
-                👋 你好！我是你的麻醉護理師 AI 教學助手。<br /><br />
-                你可以問我任何麻醉相關問題，例如：藥物機轉、考試概念、口試重點、臨床處置流程等。<br /><br />
-                我的回答會優先依據知識庫內容，若依據不足會如實說明。
+        <div className="flex flex-col h-full max-w-3xl mx-auto blur-[6px] opacity-40 pointer-events-none select-none overflow-hidden">
+          {/* Header */}
+          <div className="flex items-center justify-between pb-4 border-b flex-shrink-0" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#00d4ff,#6366f1)' }}>
+                🧠
               </div>
               <div>
-                <p className="text-xs mb-2" style={{ color: 'var(--text-muted)' }}>快速提問：</p>
-                <div className="flex flex-wrap gap-2">
-                  {QUICK_QUESTIONS.map(q => (
-                    <button key={q} onClick={() => setInput(q)} className="badge cursor-pointer hover:opacity-80 transition-opacity">
-                      {q}
-                    </button>
-                  ))}
-                </div>
+                <p className="text-sm font-semibold text-white">AI 教學問答</p>
+                <p className="text-xs" style={{ color: 'var(--text-muted)' }}>基於麻醉知識庫的精準回答</p>
               </div>
             </div>
-          )}
+            {chatHistory.length > 0 && (
+              <button onClick={clearChat} className="btn-glass text-xs py-1.5 px-3 gap-1.5">
+                <Trash2 size={12} /> 清除對話
+              </button>
+            )}
+          </div>
 
-          {chatHistory.map(msg => (
-            <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} gap-2`}>
-              {msg.role === 'assistant' && (
-                <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mt-1 text-sm"
-                  style={{ background: 'linear-gradient(135deg,#00d4ff,#6366f1)' }}>🧠</div>
-              )}
-              <div className="flex-1 max-w-[85%]">
-                <div className={msg.role === 'assistant' ? 'chat-bubble-ai' : 'chat-bubble-user'}
-                  style={{ whiteSpace: 'pre-line' }}>
-                  {msg.content}
+          {/* Messages */}
+          <div className="flex-1 overflow-y-auto py-4 space-y-4">
+            {chatHistory.length === 0 && (
+              <div className="space-y-4">
+                <div className="chat-bubble-ai max-w-lg">
+                  👋 你好！我是你的麻醉護理師 AI 教學助手。<br /><br />
+                  你可以問我任何麻醉相關問題，例如：藥物機轉、考試概念、口試重點、臨床處置流程等。<br /><br />
+                  我的回答會優先依據知識庫內容，若依據不足會如實說明。
                 </div>
-                {msg.role === 'assistant' && msg.sources && msg.sources.length > 0 && (
-                  <div className="flex items-center gap-1.5 mt-2 flex-wrap">
-                    <AlertCircle size={11} style={{ color: 'var(--text-muted)' }} />
-                    <span className="text-xs" style={{ color: 'var(--text-muted)' }}>知識依據：</span>
-                    {msg.sources.map(s => <span key={s} className="badge text-xs">{s}</span>)}
+                <div>
+                  <p className="text-xs mb-2" style={{ color: 'var(--text-muted)' }}>快速提問：</p>
+                  <div className="flex flex-wrap gap-2">
+                    {QUICK_QUESTIONS.map(q => (
+                      <button key={q} onClick={() => setInput(q)} className="badge cursor-pointer hover:opacity-80 transition-opacity">
+                        {q}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {chatHistory.map(msg => (
+              <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} gap-2`}>
+                {msg.role === 'assistant' && (
+                  <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mt-1 text-sm"
+                    style={{ background: 'linear-gradient(135deg,#00d4ff,#6366f1)' }}>🧠</div>
+                )}
+                <div className="flex-1 max-w-[85%]">
+                  <div className={msg.role === 'assistant' ? 'chat-bubble-ai' : 'chat-bubble-user'}
+                    style={{ whiteSpace: 'pre-line' }}>
+                    {msg.content}
+                  </div>
+                  {msg.role === 'assistant' && msg.sources && msg.sources.length > 0 && (
+                    <div className="flex items-center gap-1.5 mt-2 flex-wrap">
+                      <AlertCircle size={11} style={{ color: 'var(--text-muted)' }} />
+                      <span className="text-xs" style={{ color: 'var(--text-muted)' }}>知識依據：</span>
+                      {msg.sources.map(s => <span key={s} className="badge text-xs">{s}</span>)}
+                    </div>
+                  )}
+                </div>
+                {msg.role === 'user' && (
+                  <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mt-1 text-xs font-bold"
+                    style={{ background: 'linear-gradient(135deg,#00d4ff,#6366f1)', color: 'white' }}>
+                    {user.name[0]}
                   </div>
                 )}
               </div>
-              {msg.role === 'user' && (
-                <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mt-1 text-xs font-bold"
-                  style={{ background: 'linear-gradient(135deg,#00d4ff,#6366f1)', color: 'white' }}>
-                  {user.name[0]}
+            ))}
+
+            {isThinking && (
+              <div className="flex gap-2 items-center">
+                <div className="w-7 h-7 rounded-full flex items-center justify-center text-sm" style={{ background: 'linear-gradient(135deg,#00d4ff,#6366f1)' }}>🧠</div>
+                <div className="chat-bubble-ai flex items-center gap-1.5">
+                  <span className="text-xs" style={{ color: 'var(--text-muted)' }}>正在搜尋知識庫</span>
+                  {[0, 1, 2].map(i => <span key={i} className="w-1.5 h-1.5 rounded-full animate-pulse-slow" style={{ background: '#00d4ff', animationDelay: `${i * 0.2}s` }} />)}
                 </div>
-              )}
-            </div>
-          ))}
-
-          {isThinking && (
-            <div className="flex gap-2 items-center">
-              <div className="w-7 h-7 rounded-full flex items-center justify-center text-sm" style={{ background: 'linear-gradient(135deg,#00d4ff,#6366f1)' }}>🧠</div>
-              <div className="chat-bubble-ai flex items-center gap-1.5">
-                <span className="text-xs" style={{ color: 'var(--text-muted)' }}>正在搜尋知識庫</span>
-                {[0, 1, 2].map(i => <span key={i} className="w-1.5 h-1.5 rounded-full animate-pulse-slow" style={{ background: '#00d4ff', animationDelay: `${i * 0.2}s` }} />)}
               </div>
-            </div>
-          )}
-          <div ref={bottomRef} />
-        </div>
+            )}
+            <div ref={bottomRef} />
+          </div>
 
-        {/* Input */}
-        <div className="flex gap-2 pt-4 border-t flex-shrink-0" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
-          <input id="chat-input" value={input} onChange={e => setInput(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && !e.shiftKey && handleSend()}
-            className="glass-input flex-1" placeholder="輸入麻醉相關問題..." />
-          <button onClick={handleSend} disabled={!input.trim() || isThinking} className="btn-primary px-4 disabled:opacity-40">
-            <Send size={16} />
-          </button>
+          {/* Input */}
+          <div className="flex gap-2 pt-4 border-t flex-shrink-0" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
+            <input id="chat-input" value={input} onChange={e => setInput(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && !e.shiftKey && handleSend()}
+              className="glass-input flex-1" placeholder="輸入麻醉相關問題..." />
+            <button onClick={handleSend} disabled={!input.trim() || isThinking} className="btn-primary px-4 disabled:opacity-40">
+              <Send size={16} />
+            </button>
+          </div>
         </div>
       </div>
     </AppShell>
