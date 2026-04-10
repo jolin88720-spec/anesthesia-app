@@ -83,48 +83,57 @@ export default function OralPage() {
   // ---- SETUP ----
   if (phase === 'setup') return (
     <AppShell>
-      <div className="animate-slide-in-up max-w-2xl mx-auto space-y-6">
-        <div>
-          <h1 className="text-2xl font-bold text-white">AI 模擬口試</h1>
-          <p className="text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>AI 扮演資深麻醉護理師考官，訓練臨床思考與應答</p>
+      <div className="relative min-h-[500px]">
+        <div className="absolute inset-0 z-50 flex items-center justify-center p-4">
+          <div className="glass-card p-8 text-center max-w-sm w-full mx-auto flex flex-col items-center shadow-2xl" style={{ background: 'rgba(7,7,15,0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.15)' }}>
+            <div className="text-4xl mb-4">🔒</div>
+            <h2 className="text-xl font-bold text-white mb-2">付費解鎖新功能</h2>
+            <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>此功能尚未研發完成。<br/>未來將提供進階付費解鎖，敬請期待！</p>
+          </div>
         </div>
-
-        <div className="glass-card-static p-5 space-y-4">
+        <div className="animate-slide-in-up max-w-2xl mx-auto space-y-6 blur-[6px] opacity-40 pointer-events-none select-none h-full overflow-hidden">
           <div>
-            <p className="text-sm font-medium text-white mb-3">選擇口試主題</p>
-            <div className="grid grid-cols-2 gap-2">
-              {ORAL_TOPICS.map(t => (
-                <button key={t.id} onClick={() => setSelectedTopic(t.name)}
-                  className={`option-btn text-left p-3 ${selectedTopic === t.name ? 'option-selected' : ''}`}>
-                  <div className="text-lg mb-1">{t.icon}</div>
-                  <div className="text-sm font-medium text-white">{t.name}</div>
-                  <div className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>{t.description}</div>
-                </button>
-              ))}
+            <h1 className="text-2xl font-bold text-white">AI 模擬口試</h1>
+            <p className="text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>AI 扮演資深麻醉護理師考官，訓練臨床思考與應答</p>
+          </div>
+
+          <div className="glass-card-static p-5 space-y-4">
+            <div>
+              <p className="text-sm font-medium text-white mb-3">選擇口試主題</p>
+              <div className="grid grid-cols-2 gap-2">
+                {ORAL_TOPICS.map(t => (
+                  <button key={t.id} onClick={() => setSelectedTopic(t.name)}
+                    className={`option-btn text-left p-3 ${selectedTopic === t.name ? 'option-selected' : ''}`}>
+                    <div className="text-lg mb-1">{t.icon}</div>
+                    <div className="text-sm font-medium text-white">{t.name}</div>
+                    <div className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>{t.description}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <p className="text-sm font-medium text-white mb-2">口試模式</p>
+              <div className="grid grid-cols-3 gap-2">
+                {[
+                  { id: 'basic', label: '基礎', desc: '引導充分', color: '#00e878' },
+                  { id: 'scenario', label: '情境', desc: '病例式', color: '#00d4ff' },
+                  { id: 'pressure', label: '高壓', desc: '嚴格追問', color: '#ff4466' },
+                ].map(({ id, label, desc, color }) => (
+                  <button key={id} onClick={() => setSelectedMode(id as typeof selectedMode)}
+                    className={`option-btn text-center py-3 ${selectedMode === id ? 'option-selected' : ''}`}>
+                    <div className="text-sm font-medium" style={selectedMode === id ? { color } : {}}>{label}</div>
+                    <div className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>{desc}</div>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div>
-            <p className="text-sm font-medium text-white mb-2">口試模式</p>
-            <div className="grid grid-cols-3 gap-2">
-              {[
-                { id: 'basic', label: '基礎', desc: '引導充分', color: '#00e878' },
-                { id: 'scenario', label: '情境', desc: '病例式', color: '#00d4ff' },
-                { id: 'pressure', label: '高壓', desc: '嚴格追問', color: '#ff4466' },
-              ].map(({ id, label, desc, color }) => (
-                <button key={id} onClick={() => setSelectedMode(id as typeof selectedMode)}
-                  className={`option-btn text-center py-3 ${selectedMode === id ? 'option-selected' : ''}`}>
-                  <div className="text-sm font-medium" style={selectedMode === id ? { color } : {}}>{label}</div>
-                  <div className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>{desc}</div>
-                </button>
-              ))}
-            </div>
-          </div>
+          <button onClick={startOral} disabled={!selectedTopic} className="btn-primary w-full justify-center disabled:opacity-40 text-base py-4">
+            <Mic2 size={18} /> 開始口試訓練
+          </button>
         </div>
-
-        <button onClick={startOral} disabled={!selectedTopic} className="btn-primary w-full justify-center disabled:opacity-40 text-base py-4">
-          <Mic2 size={18} /> 開始口試訓練
-        </button>
       </div>
     </AppShell>
   )
