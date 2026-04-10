@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import {
   BookOpen, ClipboardList, Mic2, MessageSquare,
-  TrendingUp, AlertCircle, Target, Award, Flame
+  TrendingUp, AlertCircle, Target, Award, Flame, Lock
 } from 'lucide-react'
 import { useAppStore } from '@/store/useAppStore'
 import AppShell from '@/components/AppShell'
@@ -40,7 +40,7 @@ export default function DashboardPage() {
             {greeting}，{user.name} 👋
           </h1>
           <p className="mt-1 text-sm" style={{ color: 'var(--text-secondary)' }}>
-            今天繼續備考吧！距離考試，每一題都算數。
+            嘉苓表示:考試前多看的每一題都有可能會是最關鍵的那一題!!
           </p>
         </div>
 
@@ -68,20 +68,34 @@ export default function DashboardPage() {
         <div>
           <h2 className="section-header">快速進入</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {QUICK_ACTIONS.map(({ href, icon: Icon, label, desc, color }) => (
-              <Link key={href} href={href} className="glass-card p-5 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110"
-                    style={{ background: `${color}18`, border: `1px solid ${color}40` }}>
-                    <Icon size={20} style={{ color }} />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-white text-sm">{label}</div>
-                    <div className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>{desc}</div>
-                  </div>
+            {QUICK_ACTIONS.map(({ href, icon: Icon, label, desc, color }) => {
+              const isLocked = href === '/oral' || href === '/chat'
+              return (
+                <div key={href} className="relative h-full">
+                  {isLocked && (
+                    <div className="absolute inset-0 z-10 flex flex-col items-center justify-center rounded-2xl cursor-not-allowed"
+                         style={{ background: 'rgba(7,7,15,0.6)', backdropFilter: 'blur(3px)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                      <span className="text-white text-sm font-bold flex items-center justify-center gap-1 mb-0.5">
+                        <Lock size={12}/> 付費解鎖新功能
+                      </span>
+                      <span className="text-xs" style={{ color: 'var(--text-muted)' }}>尚未研發完成</span>
+                    </div>
+                  )}
+                  <Link href={isLocked ? '#' : href} className={`glass-card h-full p-5 flex flex-col items-start ${isLocked ? 'pointer-events-none opacity-40' : 'group cursor-pointer'}`}>
+                    <div className="flex items-start gap-4">
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform ${!isLocked && 'group-hover:scale-110'}`}
+                        style={{ background: `${color}18`, border: `1px solid ${color}40` }}>
+                        <Icon size={20} style={{ color }} />
+                      </div>
+                      <div>
+                        <div className="font-semibold text-white text-sm">{label}</div>
+                        <div className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>{desc}</div>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
-              </Link>
-            ))}
+              )
+            })}
           </div>
         </div>
 
