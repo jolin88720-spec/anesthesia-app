@@ -2,16 +2,23 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAppStore } from '@/store/useAppStore'
-import LandingPage from './landing/page'
 
 export default function HomePage() {
-  const { user } = useAppStore()
+  const { user, setUser } = useAppStore()
   const router = useRouter()
 
   useEffect(() => {
-    if (user) router.replace('/dashboard')
-  }, [user, router])
+    if (!user) {
+      setUser({
+        id: 'guest',
+        name: '訓練學員',
+        email: 'guest@anesthesia.pro',
+        targetMode: 'review',
+        createdAt: new Date().toISOString()
+      })
+    }
+    router.replace('/dashboard')
+  }, [user, router, setUser])
 
-  if (user) return null
-  return <LandingPage />
+  return null
 }
