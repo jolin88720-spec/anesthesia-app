@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import {
   LayoutDashboard, BookOpen, ClipboardList, AlertCircle,
-  Mic2, MessageSquare, Settings, Menu, X, LogOut, ChevronRight
+  Mic2, MessageSquare, Menu, X, ChevronRight, Lock
 } from 'lucide-react'
 import { useAppStore } from '@/store/useAppStore'
 
@@ -71,30 +71,26 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
           {NAV_ITEMS.map(({ href, icon: Icon, label }) => {
             const active = pathname.startsWith(href)
+            const isLocked = href === '/oral' || href === '/chat'
             return (
-              <Link key={href} href={href} className={`nav-link ${active ? 'active' : ''}`}
-                onClick={() => setMobileOpen(false)}>
-                <Icon size={18} />
-                <span className="flex-1">{label}</span>
-                {active && <ChevronRight size={14} className="opacity-60" />}
-              </Link>
+              <div key={href} className="relative group">
+                {isLocked && (
+                  <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-black/60 backdrop-blur-[1px] border border-white/5 cursor-not-allowed">
+                    <span className="text-[10px] font-bold text-white flex items-center gap-1">
+                      <Lock size={10}/> 付費解鎖功能
+                    </span>
+                  </div>
+                )}
+                <Link href={isLocked ? '#' : href} className={`nav-link ${active ? 'active' : ''} ${isLocked ? 'opacity-40 pointer-events-none' : ''}`}
+                  onClick={() => setMobileOpen(false)}>
+                  <Icon size={18} />
+                  <span className="flex-1">{label}</span>
+                  {active && <ChevronRight size={14} className="opacity-60" />}
+                </Link>
+              </div>
             )
           })}
         </nav>
-
-        {/* Bottom */}
-        <div className="p-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
-          {user?.email === 'jolin88720@gmail.com' && (
-            <Link href="/admin" className="nav-link mb-1">
-              <Settings size={18} />
-              <span>管理後台</span>
-            </Link>
-          )}
-          <button className="nav-link w-full" onClick={() => setUser(null)}>
-            <LogOut size={18} />
-            <span>登出</span>
-          </button>
-        </div>
       </aside>
 
       {/* Main content */}
