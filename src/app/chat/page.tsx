@@ -72,15 +72,7 @@ export default function ChatPage() {
 
   return (
     <AppShell>
-      <div className="relative min-h-[500px] h-[calc(100vh-8rem)] md:h-[calc(100vh-4rem)]">
-        <div className="absolute inset-0 z-50 flex items-center justify-center p-4">
-          <div className="glass-card p-8 text-center max-w-sm w-full mx-auto flex flex-col items-center shadow-2xl" style={{ background: 'rgba(7,7,15,0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.15)' }}>
-            <div className="text-4xl mb-4">🔒</div>
-            <h2 className="text-xl font-bold text-white mb-2">付費解鎖新功能</h2>
-            <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>此功能尚未研發完成。<br/>未來將提供進階付費解鎖，敬請期待！</p>
-          </div>
-        </div>
-        <div className="flex flex-col h-full max-w-3xl mx-auto blur-[6px] opacity-40 pointer-events-none select-none overflow-hidden">
+      <div className="flex flex-col h-[calc(100vh-8rem)] md:h-[calc(100vh-4rem)] max-w-3xl mx-auto">
           {/* Header */}
           <div className="flex items-center justify-between pb-4 border-b flex-shrink-0" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
             <div className="flex items-center gap-3">
@@ -171,7 +163,6 @@ export default function ChatPage() {
             </button>
           </div>
         </div>
-      </div>
     </AppShell>
   )
 }
