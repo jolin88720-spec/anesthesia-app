@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import ClickSoundProvider from '@/components/ClickSoundProvider'
 
 export const metadata: Metadata = {
   title: '麻醉護理師 AI 訓練系統',
@@ -17,7 +18,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="zh-TW">
       <body className="antialiased">
         <div className="animated-bg" aria-hidden="true" />
-        {children}
+        <ClickSoundProvider>
+          {children}
+        </ClickSoundProvider>
       </body>
     </html>
   )
