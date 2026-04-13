@@ -193,6 +193,7 @@ export default function ExamPage() {
           <div className="space-y-2">
             {q.options.map(opt => (
               <button key={opt.key} id={`exam-option-${opt.key}`}
+                data-no-sound
                 className={`option-btn ${userAnswers[q.id] === opt.key ? 'option-selected' : ''}`}
                 onClick={() => setUserAnswers(a => ({ ...a, [q.id]: opt.key }))}>
                 <div className="flex items-center gap-3">
