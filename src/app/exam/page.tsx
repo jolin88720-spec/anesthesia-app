@@ -133,7 +133,7 @@ export default function ExamPage() {
           <div>
             <p className="text-sm font-medium text-white mb-2">時間限制</p>
             <div className="flex gap-2">
-              {[60, 80].map(t => (
+              {[60, 90].map(t => (
                 <button key={t} onClick={() => setTimeLimitMin(t)}
                   className={`flex-1 option-btn text-sm py-3 text-center ${timeLimitMin === t ? 'option-selected' : ''}`}>
                   <span className="font-bold">{t}</span>
