@@ -2,25 +2,13 @@
 import { useRouter } from 'next/navigation'
 import { useAppStore } from '@/store/useAppStore'
 import { LogIn, Sun, Moon } from 'lucide-react'
-import { useState, useRef, useCallback } from 'react'
+import { useState } from 'react'
 
 export default function HomePage() {
   const { user, setUser } = useAppStore()
   const router = useRouter()
   const [isLight, setIsLight] = useState(false)
-  const audioRef = useRef<HTMLAudioElement | null>(null)
-
-  // 播放按鈕點擊音效
-  const playClick = useCallback(() => {
-    if (!audioRef.current) {
-      audioRef.current = new Audio('/button-click.mp3')
-    }
-    audioRef.current.currentTime = 0
-    audioRef.current.play().catch(() => {})
-  }, [])
-
   const handleLogin = () => {
-    playClick()
     if (!user) {
       setUser({
         id: 'guest',
@@ -34,7 +22,6 @@ export default function HomePage() {
   }
 
   const handleThemeToggle = () => {
-    playClick()
     setIsLight(prev => !prev)
   }
 
