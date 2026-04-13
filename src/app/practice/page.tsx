@@ -252,6 +252,7 @@ export default function PracticePage() {
         <div className="space-y-2">
           {q.options.map(opt => (
             <button key={opt.key} id={`option-${opt.key}`}
+              data-no-sound
               className={`option-btn ${optionState(opt.key)}`}
               onClick={() => handleAnswer(opt.key)}>
               <div className="flex items-start gap-3">
