@@ -71,7 +71,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
           {NAV_ITEMS.map(({ href, icon: Icon, label }) => {
             const active = pathname.startsWith(href)
-            const isLocked = href === '/oral' || href === '/chat'
+            const isLocked = href === '/oral'
             return (
               <div key={href} className="relative group">
                 {isLocked && (
