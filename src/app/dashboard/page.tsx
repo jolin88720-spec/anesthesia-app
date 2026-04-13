@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import {
   BookOpen, ClipboardList, Mic2, MessageSquare,
-  TrendingUp, AlertCircle, Target, Award, Flame, Lock
+  AlertCircle, Target, Award, Flame, Lock
 } from 'lucide-react'
 import { useAppStore } from '@/store/useAppStore'
 import AppShell from '@/components/AppShell'
@@ -69,7 +69,7 @@ export default function DashboardPage() {
           <h2 className="section-header">快速進入</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {QUICK_ACTIONS.map(({ href, icon: Icon, label, desc, color }) => {
-              const isLocked = href === '/oral' || href === '/chat'
+              const isLocked = href === '/oral'
               return (
                 <div key={href} className="relative h-full">
                   {isLocked && (
@@ -99,65 +99,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Weak Categories */}
-        <div className="relative">
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center rounded-2xl cursor-not-allowed"
-               style={{ background: 'rgba(7,7,15,0.6)', backdropFilter: 'blur(3px)', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <span className="text-white text-sm font-bold flex items-center justify-center gap-1 mb-0.5">
-              <Lock size={12}/> 付費解鎖新功能
-            </span>
-            <span className="text-xs" style={{ color: 'var(--text-muted)' }}>為您分析弱點</span>
-          </div>
-          <div className="glass-card-static p-5 pointer-events-none opacity-40">
-            <div className="flex items-center gap-2 mb-4">
-              <TrendingUp size={16} style={{ color: '#ffb800' }} />
-              <h2 className="font-semibold text-white text-sm">AI 建議今日優先複習</h2>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {['呼吸系統', '神經阻斷', '心血管系統', '麻醉藥物'].map(cat => (
-                <span key={cat}
-                  className="badge-amber text-xs px-3 py-1.5 rounded-full"
-                  style={{ background: 'rgba(255,184,0,0.1)', border: '1px solid rgba(255,184,0,0.3)', color: '#ffb800' }}>
-                  {cat}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
 
-        {/* Progress week */}
-        <div className="relative">
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center rounded-2xl cursor-not-allowed"
-               style={{ background: 'rgba(7,7,15,0.6)', backdropFilter: 'blur(3px)', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <span className="text-white text-sm font-bold flex items-center justify-center gap-1 mb-0.5">
-              <Lock size={12}/> 付費解鎖新功能
-            </span>
-            <span className="text-xs" style={{ color: 'var(--text-muted)' }}>記錄完整學習歷程</span>
-          </div>
-          <div className="glass-card-static p-5 pointer-events-none opacity-40">
-            <h2 className="font-semibold text-white text-sm mb-4">本週學習次數</h2>
-            <div className="flex items-end justify-between gap-1 h-16">
-              {['一', '二', '三', '四', '五', '六', '日'].map((day, i) => {
-                const stubCounts = [12, 18, 5, 23, 10, 30, 45]
-                const count = stubCounts[i]
-                const max = 45
-                const height = Math.max((count / max) * 100, 4)
-                return (
-                  <div key={day} className="flex-1 flex flex-col items-center gap-1">
-                    <div className="w-full rounded-t-sm transition-all duration-500"
-                      style={{
-                        height: `${height}%`,
-                        background: i === 6
-                          ? 'linear-gradient(to top, #00d4ff, #6366f1)'
-                          : 'rgba(255,255,255,0.08)'
-                      }} />
-                    <span className="text-xs" style={{ color: 'var(--text-muted)' }}>{day}</span>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        </div>
 
       </div>
     </AppShell>
